@@ -1,0 +1,15 @@
+@startuml
+cloud DockerHub
+package ホストマシン(Mac,Windows) as Host {
+    DockerImage --> DockerContainer : (2)docker create
+    package "Dockerイメージ操作" as DockerImage{
+        [docker images\ndocker search\ndocker commit\ndocker run\ndocker build\ndocker rmi]
+    }
+    package "Dockerコンテナ操作" as DockerContainer{
+        [docker ps\ndocker run\ndocker start\ndocker stop\ndocker rm]
+    }
+
+}
+
+DockerHub -> Host  : (1)docker pull
+@enduml
